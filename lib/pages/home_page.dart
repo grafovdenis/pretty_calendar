@@ -6,9 +6,17 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final today = DateTime.now();
     return Scaffold(
       appBar: AppBar(),
-      body: CalendarWidget(),
+      body: Column(
+        children: [
+          CalendarWidget(
+            year: today.year,
+            month: today.month,
+          ),
+        ],
+      ),
     );
   }
 }

@@ -9,6 +9,6 @@ extension DatetimeUtils on DateTime {
 
   /// First day of given month
   DateTime get firstDayOnMonth {
-    return DateTime(this.year, this.month, 1);
+    return DateTime(this.year, this.month);
   }
 }
