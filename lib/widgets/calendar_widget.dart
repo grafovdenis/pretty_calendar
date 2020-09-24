@@ -31,7 +31,7 @@ class CalendarWidget extends StatefulWidget {
 
 class _CalendarWidgetState extends State<CalendarWidget> {
   DateTime selectedDate;
-  final Color blueColor = Colors.blue;
+  final Color blueColor = Color.fromRGBO(5, 115, 230, 1);
 
   @override
   void initState() {

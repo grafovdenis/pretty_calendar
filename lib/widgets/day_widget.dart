@@ -11,16 +11,20 @@ class DayWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(style: BorderStyle.none, width: 0),
-        color: model.color,
+        color: Colors.white,
       ),
-      child: Center(
-          child: Text(
-        "${model.day}",
-        style: TextStyle(
-          fontSize: 14,
-          color: (model.isCurrentMonth) ? Colors.black : Colors.grey,
-        ),
-      )),
+      child: Stack(
+        children: [
+          Center(
+              child: Text(
+            "${model.day}",
+            style: TextStyle(
+              fontSize: 14,
+              color: (model.isCurrentMonth) ? Colors.black : Colors.grey,
+            ),
+          )),
+        ],
+      ),
       height: 48,
       width: 48,
     );
