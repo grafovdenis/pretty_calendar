@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:pretty_calendar/widgets/calendar_widget.dart';
-import 'package:pretty_calendar/widgets/legend_widget.dart';
+import 'package:pretty_calendar/widgets/calendar/calendar_widget.dart';
+import 'package:pretty_calendar/widgets/legend/legend_widget.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key key}) : super(key: key);

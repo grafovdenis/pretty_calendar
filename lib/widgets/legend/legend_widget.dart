@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:pretty_calendar/calendar_colors.dart';
-import 'package:pretty_calendar/widgets/group_widget.dart';
+import 'package:pretty_calendar/widgets/legend/group_widget.dart';
 
 import 'legend_item_widget.dart';
 

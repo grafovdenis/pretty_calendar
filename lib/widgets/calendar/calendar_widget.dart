@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
 import 'package:pretty_calendar/models/day_model.dart';
-import 'package:pretty_calendar/widgets/day_widget.dart';
+import 'package:pretty_calendar/widgets/calendar/day_widget.dart';
 import 'package:pretty_calendar/utils/date_utils.dart';
+import 'package:pretty_calendar/widgets/range/range_dialog.dart';
 
 const MONTHS = {
   1: "Январь",
@@ -92,7 +93,12 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                 Icons.calendar_today,
                 color: blueColor,
               ),
-              onPressed: () {},
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => RangeDialog(),
+                );
+              },
             ),
             SizedBox(height: 20),
           ],
