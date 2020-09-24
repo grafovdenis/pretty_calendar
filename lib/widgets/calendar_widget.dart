@@ -40,8 +40,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
   }
 
   Widget header(BuildContext context) => Container(
-        color: Colors.white,
-        padding: const EdgeInsets.symmetric(vertical: 15),
+        margin: const EdgeInsets.symmetric(vertical: 15),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -62,7 +61,8 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                     ]),
               ),
               onTap: () {
-                final today = selectedDate ?? DateTime(widget.year, widget.month);
+                final today =
+                    selectedDate ?? DateTime(widget.year, widget.month);
                 showMonthPicker(
                   context: context,
                   initialDate: today,
@@ -172,11 +172,11 @@ class _CalendarWidgetState extends State<CalendarWidget> {
     );
 
     return Container(
-      color: Colors.white,
       child: Column(
         children: [
           header(context),
-          Padding(
+          Container(
+            color: Colors.white,
             padding:
                 const EdgeInsets.only(left: 20, top: 15, right: 19, bottom: 15),
             child: calendarHeader,

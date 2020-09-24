@@ -27,7 +27,6 @@ class DayWidget extends StatelessWidget {
       decoration: BoxDecoration(
         border: Border.all(style: BorderStyle.none, width: 0),
         color: stringToColor(),
-        boxShadow: [BoxShadow(color: stringToColor(), spreadRadius: 1)],
       ),
       child: Center(
           child: Text(
