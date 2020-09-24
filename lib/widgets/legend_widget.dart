@@ -4,7 +4,6 @@ import 'package:pretty_calendar/widgets/group_widget.dart';
 
 import 'legend_item_widget.dart';
 
-///TODO make it expandable?
 class LegendWidget extends StatelessWidget {
   const LegendWidget({Key key}) : super(key: key);
 
@@ -12,23 +11,17 @@ class LegendWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       color: Colors.white,
-      padding: const EdgeInsets.symmetric(horizontal: 20),
-      child: Column(
-        children: [
-          SizedBox(height: 15),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Text(
-                "Легенда",
-                style: TextStyle(
-                  color: Color.fromRGBO(88, 88, 88, 1),
-                  fontWeight: FontWeight.w500,
-                  fontSize: 16,
-                ),
-              ),
-            ],
+      child: ExpansionTile(
+        childrenPadding: const EdgeInsets.symmetric(horizontal: 20),
+        title: Text(
+          "Легенда",
+          style: TextStyle(
+            color: Color.fromRGBO(88, 88, 88, 1),
+            fontWeight: FontWeight.w500,
+            fontSize: 16,
           ),
+        ),
+        children: [
           SizedBox(height: 15),
           Row(
             children: [
