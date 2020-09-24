@@ -34,19 +34,19 @@ class LegendWidget extends StatelessWidget {
             children: [
               LegendItemWidget(
                 title: "Плейофф",
-                color: TypeColors.playoff,
+                color: StageColors.playoff,
               ),
               LegendItemWidget(
                 title: "Этап 1",
-                color: TypeColors.stage1,
+                color: StageColors.stage1,
               ),
               LegendItemWidget(
                 title: "Этап 2",
-                color: TypeColors.stage2,
+                color: StageColors.stage2,
               ),
               LegendItemWidget(
                 title: "Финал",
-                color: TypeColors.finalStage,
+                color: StageColors.finalStage,
               ),
             ],
           ),

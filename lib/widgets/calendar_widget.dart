@@ -80,7 +80,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
             ),
             FloatingActionButton.extended(
               backgroundColor: Colors.white,
-              onPressed: () {},
               label: Text(
                 "Диапазон",
                 style: TextStyle(
@@ -93,6 +92,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
                 Icons.calendar_today,
                 color: blueColor,
               ),
+              onPressed: () {},
             ),
             SizedBox(height: 20),
           ],

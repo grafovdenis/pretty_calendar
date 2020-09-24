@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class TypeColors {
+class StageColors {
   static const playoff = Color.fromRGBO(245, 240, 255, 1);
   static const stage1 = Color.fromRGBO(255, 240, 240, 1);
   static const stage2 = Color.fromRGBO(240, 246, 255, 1);
