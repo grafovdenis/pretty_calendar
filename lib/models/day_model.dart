@@ -1,16 +1,18 @@
+import 'package:flutter/material.dart';
+
 class DayModel {
   ///Base properties
   final int day;
   final bool isCurrentMonth;
 
-  final String color;
-  final List<String> underlineColors;
+  final Color color;
+  final List<Color> underlineColors;
   final bool hasPrev;
   final bool hasNext;
 
   DayModel({
     this.isCurrentMonth = true,
-    this.color = "white",
+    this.color = Colors.white,
     this.day,
     this.underlineColors,
     this.hasPrev = false,
