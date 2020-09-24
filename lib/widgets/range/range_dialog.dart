@@ -47,17 +47,58 @@ class RangeDialog extends StatelessWidget {
     return Material(
       type: MaterialType.transparency,
       child: Container(
-        margin: const EdgeInsets.all(20) + const EdgeInsets.symmetric(vertical: 20),
+        margin:
+            const EdgeInsets.all(20) + const EdgeInsets.symmetric(vertical: 20),
         padding: const EdgeInsets.all(20),
         decoration: BoxDecoration(
           color: Color.fromRGBO(238, 238, 238, 1),
           borderRadius: BorderRadius.circular(4),
         ),
-        child: Column(
+        child: Stack(
           children: [
-            header,
-            SizedBox(height: 40),
-            bottomButton,
+            Align(
+              alignment: Alignment.topCenter,
+              child: header,
+            ),
+            Center(
+              child: Container(
+                height: MediaQuery.of(context).size.height * 0.65,
+              ),
+            ),
+            Align(
+              alignment: Alignment.bottomCenter,
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 15),
+                  Text(
+                    "Диапазон дат",
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Color.fromRGBO(88, 88, 88, 1),
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  Container(
+                    height: 38,
+                    width: double.infinity,
+                    child: Row(
+                      children: [
+                        TextFormField(
+                          decoration: InputDecoration(hintText: "c"),
+                        ),
+                        TextFormField(
+                          decoration: InputDecoration(hintText: "по"),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: 8),
+                  bottomButton,
+                ],
+              ),
+            ),
           ],
         ),
       ),
