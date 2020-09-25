@@ -11,7 +11,7 @@ class DayWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         border: Border.all(style: BorderStyle.none, width: 0),
-        color: Colors.white,
+        color: Colors.transparent,
       ),
       child: Stack(
         children: [
