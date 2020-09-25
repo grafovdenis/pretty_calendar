@@ -80,21 +80,6 @@ class RangeDialog extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 8),
-                  Container(
-                    height: 38,
-                    width: double.infinity,
-                    child: Row(
-                      children: [
-                        TextFormField(
-                          decoration: InputDecoration(hintText: "c"),
-                        ),
-                        TextFormField(
-                          decoration: InputDecoration(hintText: "по"),
-                        ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 8),
                   bottomButton,
                 ],
               ),
