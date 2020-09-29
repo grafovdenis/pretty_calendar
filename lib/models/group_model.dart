@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-class StageModel {
+class GroupModel {
   final String title;
   final DateTime from;
   final DateTime till;
 
   final Color color;
 
-  StageModel({
+  GroupModel({
     @required this.title,
     @required this.from,
     @required this.till,

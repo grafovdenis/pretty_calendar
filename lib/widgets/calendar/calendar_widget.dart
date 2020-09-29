@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
+import 'package:pretty_calendar/calendar_colors.dart';
 import 'package:pretty_calendar/models/day_model.dart';
+import 'package:pretty_calendar/models/group_model.dart';
+import 'package:pretty_calendar/models/stage_model.dart';
 import 'package:pretty_calendar/widgets/calendar/day_widget.dart';
 import 'package:pretty_calendar/utils/date_utils.dart';
 import 'package:pretty_calendar/widgets/range/range_dialog.dart';
@@ -33,6 +36,62 @@ class CalendarWidget extends StatefulWidget {
 class _CalendarWidgetState extends State<CalendarWidget> {
   DateTime selectedDate;
   final Color blueColor = Color.fromRGBO(5, 115, 230, 1);
+  final List<StageModel> stages = [];
+  final List<GroupModel> groups = [];
+
+  void addStages() {
+    stages.clear();
+    stages.addAll([
+      StageModel(
+        title: "Плейофф",
+        from: DateTime(selectedDate.year, selectedDate.month, 4),
+        till: DateTime(selectedDate.year, selectedDate.month, 6),
+        color: StageColors.playoff,
+      ),
+      StageModel(
+        title: "Этап 1",
+        from: DateTime(selectedDate.year, selectedDate.month, 7),
+        till: DateTime(selectedDate.year, selectedDate.month, 13),
+        color: StageColors.stage1,
+      ),
+      StageModel(
+        title: "Этап 2",
+        from: DateTime(selectedDate.year, selectedDate.month, 14),
+        till: DateTime(selectedDate.year, selectedDate.month, 26),
+        color: StageColors.stage2,
+      ),
+      StageModel(
+        title: "Финал",
+        from: DateTime(selectedDate.year, selectedDate.month, 27),
+        till: DateTime(selectedDate.year, selectedDate.month, 28),
+        color: StageColors.finalStage,
+      ),
+    ]);
+  }
+
+  void addGroups() {
+    groups.clear();
+    groups.addAll([
+      GroupModel(
+        title: "Группа A",
+        from: DateTime(selectedDate.year, selectedDate.month, 7),
+        till: DateTime(selectedDate.year, selectedDate.month, 10),
+        color: GroupColors.groupA,
+      ),
+      GroupModel(
+        title: "Группа Б",
+        from: DateTime(selectedDate.year, selectedDate.month, 11),
+        till: DateTime(selectedDate.year, selectedDate.month, 16),
+        color: GroupColors.groupB,
+      ),
+      GroupModel(
+        title: "Группа В",
+        from: DateTime(selectedDate.year, selectedDate.month, 14),
+        till: DateTime(selectedDate.year, selectedDate.month, 19),
+        color: GroupColors.groupC,
+      ),
+    ]);
+  }
 
   @override
   void initState() {
@@ -146,7 +205,34 @@ class _CalendarWidgetState extends State<CalendarWidget> {
 
     void buildMonth() {
       for (int i = 0; i < daysInMonth; i++) {
-        data.add(DayModel(day: firstDayOfMonth.add(Duration(days: i))));
+        final day = firstDayOfMonth.add(Duration(days: i));
+        Color color = Colors.white;
+        bool isFirstStage = false;
+        bool isLastStage = false;
+        for (var stage in stages) {
+          if (day.isAfter(stage.from) && day.isBefore(stage.till)) {
+            color = stage.color;
+          }
+          if (day.isAtSameMomentAs(stage.from)) {
+            if (stage == stages.first) {
+              isFirstStage = true;
+            }
+            color = stage.color;
+          }
+          if (day.isAtSameMomentAs(stage.till)) {
+            color = stage.color;
+            if (stage == stages.last) {
+              isLastStage = true;
+            }
+          }
+        }
+
+        data.add(DayModel(
+          day: day,
+          color: color,
+          isFirstStage: isFirstStage,
+          isLastStage: isLastStage,
+        ));
       }
     }
 
@@ -165,7 +251,13 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       }
     }
 
+    if (selectedDate != null) {
+      addStages();
+      addGroups();
+    }
+
     buildPrevWeek();
+
     buildMonth();
     buildNextWeek();
 
@@ -188,14 +280,18 @@ class _CalendarWidgetState extends State<CalendarWidget> {
           Container(
             color: Colors.white,
             padding:
-                const EdgeInsets.only(left: 20, top: 15, right: 19, bottom: 15),
+                const EdgeInsets.only(left: 30, top: 15, right: 30, bottom: 15),
             child: calendarHeader,
           ),
           Container(
             height: 2,
             color: Color.fromRGBO(238, 238, 238, 1),
           ),
-          body,
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 5),
+            color: Colors.white,
+            child: body,
+          ),
         ],
       ),
     );
