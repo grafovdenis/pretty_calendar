@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class DayModel {
   ///Base properties
-  final int day;
+  final DateTime day;
   final bool isCurrentMonth;
 
   DayModel({

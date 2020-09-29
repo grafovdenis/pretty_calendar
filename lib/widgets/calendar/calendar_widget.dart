@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:month_picker_dialog/month_picker_dialog.dart';
-import 'package:pretty_calendar/calendar_colors.dart';
 import 'package:pretty_calendar/models/day_model.dart';
 import 'package:pretty_calendar/widgets/calendar/day_widget.dart';
 import 'package:pretty_calendar/utils/date_utils.dart';
@@ -139,14 +138,15 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         for (int i = 0;
             i < firstDayOfMonth.difference(prevMonday).inDays;
             i++) {
-          data.add(DayModel(day: prevMonday.day + i, isCurrentMonth: false));
+          data.add(DayModel(
+              day: prevMonday.add(Duration(days: i)), isCurrentMonth: false));
         }
       }
     }
 
     void buildMonth() {
       for (int i = 0; i < daysInMonth; i++) {
-        data.add(DayModel(day: i + 1));
+        data.add(DayModel(day: firstDayOfMonth.add(Duration(days: i))));
       }
     }
 
@@ -157,7 +157,10 @@ class _CalendarWidgetState extends State<CalendarWidget> {
         return;
       } else {
         for (int i = 0; i < 7 - lastDayOfMonth.weekday; i++) {
-          data.add(DayModel(day: i + 1, isCurrentMonth: false));
+          data.add(DayModel(
+            day: lastDayOfMonth.add(Duration(days: i + 1)),
+            isCurrentMonth: false,
+          ));
         }
       }
     }
@@ -178,36 +181,6 @@ class _CalendarWidgetState extends State<CalendarWidget> {
       ),
     );
 
-    Widget drawStages() {
-      Color color(int index) {
-        if (index >= 9 && index <= 13) {
-          return StageColors.playoff;
-        } else if (index >= 14 && index <= 15) {
-          return StageColors.stage1;
-        } else if (index >= 16 && index <= 19) {
-          return StageColors.stage2;
-        } else if (index >= 20 && index <= 23) {
-          return StageColors.finalStage;
-        } else {
-          return Colors.white;
-        }
-      }
-
-      return GridView.builder(
-        itemCount: data.length,
-        gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 7),
-        addRepaintBoundaries: false,
-        primary: false,
-        shrinkWrap: true,
-        itemBuilder: (context, index) => Container(
-          height: 48,
-          width: 48,
-          color: color(index),
-        ),
-      );
-    }
-
     return Container(
       child: Column(
         children: [
@@ -222,12 +195,7 @@ class _CalendarWidgetState extends State<CalendarWidget> {
             height: 2,
             color: Color.fromRGBO(238, 238, 238, 1),
           ),
-          Stack(
-            children: [
-              drawStages(),
-              body,
-            ],
-          ),
+          body,
         ],
       ),
     );
